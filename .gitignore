@@ -1,0 +1,26 @@
+# bin and obj folders
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+
+# Visual Studio files
+.vs/
+*.vscode/
+
+# Other files
+*.log
+*.bak
+*.cache
+*.sql

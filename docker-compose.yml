@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    mem_limit: 3gb
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: MyPassword123__
+      MSSQL_PID: Developer
+    volumes:
+      - db-data:/var/opt/mssql
+    ports:
+      - "1433:1433"
+
+volumes:
+  db-data:
