@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace ReadData // Note: actual namespace depends on the project name.
@@ -8,13 +7,18 @@ namespace ReadData // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            using( var db = new AppVentaCursosContext() )
+            using (var db = new AppVentaCursosContext())
             {
-                var cursos = db.Curso.AsNoTracking();
+                var cursos = db.Curso.Include(c => c.InstructorLink).ThenInclude(c => c.Instructor);
 
-                foreach(var curso in cursos)
+                foreach (var curso in cursos)
                 {
-                    Console.WriteLine($"{curso.Titulo} - {curso.Descripcion}");
+                    Console.WriteLine(curso.Titulo);
+
+                    foreach (var instructionlink in curso.InstructorLink)
+                    {
+                        Console.WriteLine($"******** {instructionlink.Instructor.Nombre }");
+                    }
                 }
 
             }

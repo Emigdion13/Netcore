@@ -25,10 +25,21 @@ namespace ReadData
                 // Define the primary key for the table as the "CursoId" property
                 entity.HasKey(c => c.CursoId);
             });
+
+            modelBuilder.Entity<CursoInstructor>(entity => {
+
+
+                entity.HasKey(CI => new { CI.CursoId, CI.InstructorId  } );
+            });
         }
 
-        public DbSet<Cursos> Cursos { get; set; }
+
+
+        public DbSet<Curso> Curso { get; set; }
         public DbSet<Precio> Precio { get; set; }
+        public DbSet<Comentario> Comentario { get; set; }
+        public DbSet<Instructor> Instructor { get; set; }
+        public DbSet<CursoInstructor> CursoInstructor { get; set; }
 
     }
 
